@@ -13,6 +13,7 @@ public class OutputView {
     private static final String BEFORE_SALE_TOTAL_PRICE_TITLE = "<할인 전 총주문 금액>";
     private static final String BONUS_MENU_TITLE = "<증정 메뉴>";
     private static final String BENEFIT_DETAILS_TITLE = "<혜택 내역>";
+    private static final String TOTAL_BENEFIT_PRICE_TITLE = "<총혜택 금액>";
 
     public static void printGreeting() {
         System.out.println(GREETINGS);
@@ -52,6 +53,11 @@ public class OutputView {
 
     public static void printBenefitDetails(String ment) {
         System.out.println(BENEFIT_DETAILS_TITLE);
-        System.out.println(ment);
+        System.out.println(ment+LINE_BREAKING);
+    }
+
+    public static void printAllBenefitPrice(String totalBenefitPrice) {
+        System.out.println(TOTAL_BENEFIT_PRICE_TITLE);
+        System.out.println("-" + totalBenefitPrice + "원" + LINE_BREAKING);
     }
 }

@@ -16,6 +16,7 @@ public class ChristmasPromotion {
         SaleInformation saleInformation = new SaleInformation(visitDate.getVisitDate(), user);
         OutputView.printBonusMenu(saleInformation.findBonusMenu().getMent());
         OutputView.printBenefitDetails(saleInformation.allDetailsMent());
+        OutputView.printAllBenefitPrice(Parser.parseNumberCommaFormat(saleInformation.findTotalBenefitPrice()));
     }
 
     private VisitDate saveVisitDate() {

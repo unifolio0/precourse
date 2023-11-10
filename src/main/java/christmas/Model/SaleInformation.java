@@ -28,8 +28,16 @@ public class SaleInformation {
         return detailsMent;
     }
 
+    private boolean isSale() {
+        return this.user.calculateTotalPrice() >= MINIMUM_TOTAL_PRICE;
+    }
+
+    private D_DaySale findDDaySale() {
+        return new D_DaySale(visitDate);
+    }
+
     private String findDDaySaleDetailsMent() {
-        return D_DaySale.detailsMent(visitDate);
+        return findDDaySale().detailsMent();
     }
 
     private String findDateSaleDetailsMent() {
@@ -40,11 +48,23 @@ public class SaleInformation {
         return detailsMent;
     }
 
+    private int findDateSaleAmount() {
+        int saleAmount = 0;
+        for (DateSale dateSale : findDateSale()) {
+            saleAmount += dateSale.getSaleAmount(user.getAllMenuAndQuantity());
+        }
+        return saleAmount;
+    }
+
     private List<DateSale> findDateSale() {
         return DateSale.valueOf(visitDate);
     }
 
-    private boolean isSale() {
-        return this.user.calculateTotalPrice() >= MINIMUM_TOTAL_PRICE;
+    public int findTotalBenefitPrice() {
+        int total = 0;
+        total += findBonusMenu().getPrice();
+        total += findDDaySale().saleAmount();
+        total += findDateSaleAmount();
+        return total;
     }
 }
