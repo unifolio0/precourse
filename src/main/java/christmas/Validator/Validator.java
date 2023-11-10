@@ -2,8 +2,10 @@ package christmas.Validator;
 
 import christmas.Model.Menu;
 
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.regex.Pattern;
 
 import static christmas.Validator.ValidatorConstant.*;
@@ -66,9 +68,11 @@ public class Validator {
         }
     }
 
-    public static void validateOnlyBeverage(List<Integer> chategoryCount) {
-        for (int i = 0; i < 3; i++) {
-            if (chategoryCount.get(i) != 0) {
+    public static void validateOnlyBeverage(Set<String> allMenuNames) {
+        Iterator<String> iterator = allMenuNames.iterator();
+        while (iterator.hasNext()) {
+            String MenuName = iterator.next();
+            if (!Menu.getMenu(MenuName).equals(Menu.BEVERAGE)) {
                 return;
             }
         }
