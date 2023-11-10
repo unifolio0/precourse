@@ -1,8 +1,6 @@
 package christmas.Controller;
 
-import christmas.Model.SaleInfomation;
-import christmas.Model.User;
-import christmas.Model.VisitDate;
+import christmas.Model.*;
 import christmas.Parser;
 import christmas.View.InputView;
 import christmas.View.OutputView;
@@ -15,8 +13,9 @@ public class ChristmasPromotion {
         this.visitDate = saveVisitDate();
         this.user = saveUser();
         printOrderInformation();
-        SaleInfomation saleInfomation = new SaleInfomation(visitDate.getVisitDate(), user.calculateTotalPrice());
-        OutputView.printBonusMenu(saleInfomation.bonusMenuMent());
+        SaleInformation saleInformation = new SaleInformation(visitDate.getVisitDate(), user);
+        OutputView.printBonusMenu(saleInformation.findBonusMenu().getMent());
+        OutputView.printBenefitDetails(saleInformation.allDetailsMent());
     }
 
     private VisitDate saveVisitDate() {

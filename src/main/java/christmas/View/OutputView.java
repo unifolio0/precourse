@@ -12,6 +12,7 @@ public class OutputView {
     private static final String ORDER_MENU_PRINT_FORMAT = "%s %d개";
     private static final String BEFORE_SALE_TOTAL_PRICE_TITLE = "<할인 전 총주문 금액>";
     private static final String BONUS_MENU_TITLE = "<증정 메뉴>";
+    private static final String BENEFIT_DETAILS_TITLE = "<혜택 내역>";
 
     public static void printGreeting() {
         System.out.println(GREETINGS);
@@ -46,6 +47,11 @@ public class OutputView {
 
     public static void printBonusMenu(String ment) {
         System.out.println(BONUS_MENU_TITLE);
+        System.out.println(ment + LINE_BREAKING);
+    }
+
+    public static void printBenefitDetails(String ment) {
+        System.out.println(BENEFIT_DETAILS_TITLE);
         System.out.println(ment);
     }
 }
