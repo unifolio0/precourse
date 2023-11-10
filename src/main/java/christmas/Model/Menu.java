@@ -9,20 +9,41 @@ public enum Menu {
     BEVERAGE(Map.of("제로콜라", 3000, "레드와인", 60000, "샴페인", 25000));
 
     private Map<String, Integer> detailMenu;
+
     Menu(Map<String, Integer> menu) {
         this.detailMenu = menu;
     }
 
-    public Map<String, Integer> getMenu() {
-        return detailMenu;
+    public static Menu getMenu(String menuName) {
+        for (Menu menu : values()) {
+            if (menu.detailMenu.containsKey(menuName)) {
+                return menu;
+            }
+        }
+        return null;
     }
 
     public static boolean containMenu(String input) {
-        for (Menu menu : values()) {
-            if (menu.detailMenu.containsKey(input)) {
-                return true;
-            }
+        Map<String, Integer> chategoryMenu = getDetailMenu(input);
+        if (chategoryMenu != null) {
+            return true;
         }
         return false;
+    }
+
+    public static int getPrice(String menuName) {
+        Map<String, Integer> chategoryMenu = getDetailMenu(menuName);
+        if (chategoryMenu != null) {
+            return chategoryMenu.get(menuName);
+        }
+        return 0;
+    }
+
+    private static Map<String, Integer> getDetailMenu(String menuName) {
+        Menu menu = getMenu(menuName);
+        if (menu != null) {
+            return menu.detailMenu;
+        }
+        return null;
     }
 }
