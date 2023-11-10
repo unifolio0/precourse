@@ -7,8 +7,9 @@ import christmas.View.OutputView;
 
 public class ChristmasPromotion {
     public void run() {
-        saveVisitDate();
-        saveUser();
+        VisitDate visitDate = saveVisitDate();
+        User user = saveUser();
+        OutputView.printPriviewTitle(visitDate.getVisitDate());
     }
 
     private VisitDate saveVisitDate() {
