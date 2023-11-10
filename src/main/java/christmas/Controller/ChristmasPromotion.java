@@ -2,6 +2,7 @@ package christmas.Controller;
 
 import christmas.Model.User;
 import christmas.Model.VisitDate;
+import christmas.Parser;
 import christmas.View.InputView;
 import christmas.View.OutputView;
 
@@ -10,6 +11,8 @@ public class ChristmasPromotion {
         VisitDate visitDate = saveVisitDate();
         User user = saveUser();
         OutputView.printPriviewTitle(visitDate.getVisitDate());
+        OutputView.printAllOrderMenu(user.getAllMenuAndQuantity());
+        OutputView.printBeforeSaleTotalPrice(Parser.parseNumberCommaFormat(user.calculateTotalPrice()));
     }
 
     private VisitDate saveVisitDate() {
