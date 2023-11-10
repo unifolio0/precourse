@@ -1,20 +1,17 @@
 package christmas.Controller;
 
+import christmas.Model.User;
 import christmas.Model.VisitDate;
-import christmas.Parser;
-import christmas.Validator.Validator;
 import christmas.View.InputView;
 import christmas.View.OutputView;
 
-import java.util.List;
-
 public class ChristmasPromotion {
     public void run() {
-        makeVisitDate();
-        makeMenuAndCount();
+        saveVisitDate();
+        saveUser();
     }
 
-    private VisitDate makeVisitDate() {
+    private VisitDate saveVisitDate() {
         while (true) {
             try {
                 String userInput = InputView.requestVisitDate();
@@ -26,13 +23,12 @@ public class ChristmasPromotion {
         }
     }
 
-    private void makeMenuAndCount() {
+    private User saveUser() {
         while (true) {
             try {
                 String input = InputView.requestMenuAndQuantity();
-                List<String> pp = Parser.parseStringSplitComma(input);
-                Validator.validateAllMenuAndQuantityRegularExpression(pp);
-                return;
+                User user = new User(input);
+                return user;
             } catch (IllegalArgumentException e) {
                 OutputView.printErrorMessage(e.getMessage());
             }

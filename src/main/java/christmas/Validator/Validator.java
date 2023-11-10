@@ -1,6 +1,9 @@
 package christmas.Validator;
 
+import christmas.Model.Menu;
+
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Pattern;
 
 import static christmas.Validator.ValidatorConstant.*;
@@ -33,7 +36,25 @@ public class Validator {
 
     private static void validateMenuAndQuantityRegularExpression(String input) {
         if (!Pattern.matches(MENU_AND_QUANTITY_REGULAR_EXPRESSION, input)) {
-            throw new IllegalArgumentException(MENU_AND_COUNT_ERROR.getMessage());
+            throw new IllegalArgumentException(MENU_AND_QUANTITY_ERROR.getMessage());
+        }
+    }
+
+    public static void validateQuantitySize(int input) {
+        if (input < 1) {
+            throw new IllegalArgumentException(MENU_AND_QUANTITY_ERROR.getMessage());
+        }
+    }
+
+    public static void validateContainMenu(String input) {
+        if (!Menu.containMenu(input)) {
+            throw new IllegalArgumentException(MENU_AND_QUANTITY_ERROR.getMessage());
+        }
+    }
+
+    public static void validateDuplicateUserMenu(Map<String, Integer> userMenuAndQuantity, String input) {
+        if (userMenuAndQuantity.containsKey(input)) {
+            throw new IllegalArgumentException(MENU_AND_QUANTITY_ERROR.getMessage());
         }
     }
 }
