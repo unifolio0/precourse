@@ -6,17 +6,21 @@ import java.util.Set;
 
 public class OutputView {
     private static final String LINE_BREAKING = "\n";
+    private static final String GREETINGS = "안녕하세요! 우테코 식당 12월 이벤트 플래너입니다.";
     private static final String PRIVIEW_TITLE = "12월 %d일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!";
     private static final String ORDER_MENU_TITLE = "<주문 메뉴>";
     private static final String ORDER_MENU_PRINT_FORMAT = "%s %d개";
     private static final String BEFORE_SALE_TOTAL_PRICE_TITLE = "<할인 전 총주문 금액>";
     private static final String BONUS_MENU_TITLE = "<증정 메뉴>";
 
+    public static void printGreeting() {
+        System.out.println(GREETINGS);
+    }
     public static void printErrorMessage(String errorMessage) {
         System.out.println(errorMessage+LINE_BREAKING);
     }
 
-    public static void printPriviewTitle(int visitDate) {
+    public static void printPreviewTitle(int visitDate) {
         System.out.printf(PRIVIEW_TITLE+LINE_BREAKING.repeat(2), visitDate);
     }
 
@@ -40,7 +44,8 @@ public class OutputView {
         System.out.println(totalPrice+"원"+LINE_BREAKING);
     }
 
-    public static void printBonusMenu() {
+    public static void printBonusMenu(String ment) {
         System.out.println(BONUS_MENU_TITLE);
+        System.out.println(ment);
     }
 }
