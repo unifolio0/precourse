@@ -62,7 +62,18 @@ public class SaleInformation {
 
     public int findTotalBenefitPrice() {
         int total = 0;
-        total += findBonusMenu().getPrice();
+        total -= findBonusMenu().getPrice();
+        total -= findDDaySale().saleAmount();
+        total -= findDateSaleAmount();
+        return total;
+    }
+
+    public int calculateActialPayment() {
+        return user.calculateTotalPrice() - findActualBenefitPrice();
+    }
+
+    private int findActualBenefitPrice() {
+        int total = 0;
         total += findDDaySale().saleAmount();
         total += findDateSaleAmount();
         return total;

@@ -17,6 +17,7 @@ public class ChristmasPromotion {
         OutputView.printBonusMenu(saleInformation.findBonusMenu().getMent());
         OutputView.printBenefitDetails(saleInformation.allDetailsMent());
         OutputView.printAllBenefitPrice(Parser.parseNumberCommaFormat(saleInformation.findTotalBenefitPrice()));
+        OutputView.printActualPayment(Parser.parseNumberCommaFormat(saleInformation.calculateActialPayment()));
     }
 
     private VisitDate saveVisitDate() {
