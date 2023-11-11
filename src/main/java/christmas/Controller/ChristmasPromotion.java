@@ -18,6 +18,8 @@ public class ChristmasPromotion {
         OutputView.printBenefitDetails(saleInformation.allDetailsMent());
         OutputView.printAllBenefitPrice(Parser.parseNumberCommaFormat(saleInformation.findTotalBenefitPrice()));
         OutputView.printActualPayment(Parser.parseNumberCommaFormat(saleInformation.calculateActialPayment()));
+        EventBadge eventBadge = EventBadge.valueOf(saleInformation.findTotalBenefitPrice());
+        OutputView.printEventBadge(eventBadge.getBadgeName());
     }
 
     private VisitDate saveVisitDate() {

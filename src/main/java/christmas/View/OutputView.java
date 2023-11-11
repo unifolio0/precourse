@@ -67,4 +67,9 @@ public class OutputView {
         System.out.println(ACTUAL_PAYMENT_TITLE);
         System.out.println(actualPayment + "원" + LINE_BREAKING);
     }
+
+    public static void printEventBadge(String eventBadge) {
+        System.out.println(EVENT_BADGE_TITLE);
+        System.out.println(eventBadge);
+    }
 }
