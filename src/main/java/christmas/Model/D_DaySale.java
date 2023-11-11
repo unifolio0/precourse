@@ -16,7 +16,10 @@ public class D_DaySale {
     }
 
     public String detailsMent() {
-        String detailsMent = "크리스마스 디데이 할인: -" + Parser.parseNumberCommaFormat(saleAmount()) + "원\n";
-        return detailsMent;
+        if (visitDate <= 25) {
+            String detailsMent = "크리스마스 디데이 할인: -" + Parser.parseNumberCommaFormat(saleAmount()) + "원\n";
+            return detailsMent;
+        }
+        return "";
     }
 }
