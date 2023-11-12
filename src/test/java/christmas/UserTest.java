@@ -1,6 +1,7 @@
 package christmas;
 
 import christmas.Model.User;
+import christmas.Validator.ValidatorConstant;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -22,7 +23,7 @@ public class UserTest {
     void UserNotValidException(String input) {
         assertThatThrownBy(() -> new User(input))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
+                .hasMessage(ValidatorConstant.MENU_AND_QUANTITY_ERROR.getMessage());
     }
 
     @DisplayName("음료만 주문한 경우 예외 처리")
@@ -31,7 +32,7 @@ public class UserTest {
     void UserMenuOnlyBeverage(String input) {
         assertThatThrownBy(() -> new User(input))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("[ERROR] 음료만 주문할 수는 없습니다.");
+                .hasMessage(ValidatorConstant.ONLY_BEVERAGE_ERROR.getMessage());
     }
 
     @DisplayName("총 20개를 초과하여 주문한 경우 예외 처리")
@@ -40,6 +41,6 @@ public class UserTest {
     void UserMenuOverSize(String input) {
         assertThatThrownBy(() -> new User(input))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("[ERROR] 최대 20개까지만 구매할 수 있습니다. 다시 입력해 주세요.");
+                .hasMessage(ValidatorConstant.OVER_TOTAL_SIZE_ERROR.getMessage());
     }
 }

@@ -1,6 +1,7 @@
 package christmas;
 
 import christmas.Model.VisitDate;
+import christmas.Validator.ValidatorConstant;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -19,6 +20,6 @@ public class VisitDateTest {
     void VisitDateNotValidException(String input) {
         assertThatThrownBy(() -> new VisitDate(input))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.");
+                .hasMessage(ValidatorConstant.VISIT_DATE_ERROR.getMessage());
     }
 }
