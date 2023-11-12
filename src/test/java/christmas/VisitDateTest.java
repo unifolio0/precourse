@@ -15,7 +15,7 @@ public class VisitDateTest {
             "f", "12f", "1@", "1.1"    /*정수가 아닌 경우*/
     })
     @ParameterizedTest
-    void underLottoPrice(String input) {
+    void VisitDateException(String input) {
         assertThatThrownBy(() -> new VisitDate(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.");
