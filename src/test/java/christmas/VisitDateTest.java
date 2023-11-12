@@ -12,7 +12,8 @@ public class VisitDateTest {
     @DisplayName("유효하지 않은 방문 날짜 입력 예외 처리")
     @ValueSource(strings = {
             "32", "0", "-12",    /*1~31의 범위를 벗어나는 경우*/
-            "f", "12f", "1@", "1.1"    /*정수가 아닌 경우*/
+            "f", "12f", "1@", "1.1",    /*정수가 아닌 경우*/
+            "", " "  /*빈 문자열인 경우*/
     })
     @ParameterizedTest
     void VisitDateNotValidException(String input) {
