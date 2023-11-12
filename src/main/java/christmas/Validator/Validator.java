@@ -32,6 +32,12 @@ public class Validator {
         }
     }
 
+    public static void validateIsEmpty(String userInput) {
+        if (userInput.isEmpty()) {
+            throw new IllegalArgumentException(MENU_AND_QUANTITY_ERROR.getMessage());
+        }
+    }
+
     public static void validateLastComma(String userInput) {
         if (userInput.charAt(userInput.length() - 1) == ',') {
             throw new IllegalArgumentException(MENU_AND_QUANTITY_ERROR.getMessage());

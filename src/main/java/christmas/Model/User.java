@@ -10,6 +10,7 @@ public class User {
     //key:주문한 음식 이름, value:주문한 음식 갯수
 
     public User(String userInput) {
+        Validator.validateIsEmpty(userInput);
         Validator.validateLastComma(userInput);
         List<String> parseUserInput = Parser.parseStringSplitComma(userInput);
         Validator.validateAllMenuAndQuantityRegularExpression(parseUserInput);
