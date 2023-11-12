@@ -54,7 +54,11 @@ public enum DateSale {
     }
 
     public String getDetailsMent(Map<String, Integer> allMenuAndQuantity) {
-        return this.detailsMent + fomatingSaleAmount(getSaleAmount(allMenuAndQuantity)) + "원\n";
+        int saleAmount = getSaleAmount(allMenuAndQuantity);
+        if (saleAmount > 0) {
+            return this.detailsMent + fomatingSaleAmount(saleAmount) + "원\n";
+        }
+        return "";
     }
 
     private String fomatingSaleAmount(int saleAmount) {
