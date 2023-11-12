@@ -28,6 +28,21 @@ public class UserTest {
                 .isEqualTo(Map.of("아이스크림",3));
     }
 
+    @DisplayName("할인 전 총 주문 금액을 정확히 도출하는 지 테스트")
+    @Test
+    void calculateBeforeSaleTotalPrice1() {
+        User user = new User("양송이수프-3,바비큐립-2,레드와인-3");
+        assertThat(user.calculateTotalPrice())
+                .isEqualTo(306000);
+    }
+
+    @Test
+    void calculateBeforeSaleTotalPrice2() {
+        User user = new User("아이스크림-3");
+        assertThat(user.calculateTotalPrice())
+                .isEqualTo(15000);
+    }
+
     @DisplayName("유효하지 않은 메뉴 입력 예외 처리")
     @ValueSource(strings = {
             "해산물-1", "양송이수프-4,초코이크-2,아이스크림-1", "양송이수프-4,초코 케이크-2,아이스크림-1", "양송이수프-1,-4,아이스크림-1",  /*메뉴판에 없는 메뉴를 입력한 경우*/
