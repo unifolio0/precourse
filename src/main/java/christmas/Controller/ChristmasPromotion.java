@@ -14,10 +14,7 @@ public class ChristmasPromotion {
         this.user = saveUser();
         printOrderInformation();
         SaleInformation saleInformation = new SaleInformation(visitDate.getVisitDate(), user);
-        OutputView.printBonusMenu(saleInformation.findBonusMenu().getMent());
-        OutputView.printBenefitDetails(saleInformation.allDetailsMent());
-        OutputView.printAllBenefitPrice(Parser.parseNumberCommaFormat(saleInformation.findTotalBenefitPrice()));
-        OutputView.printActualPayment(Parser.parseNumberCommaFormat(saleInformation.calculateActialPayment()));
+        printSaleIformation(saleInformation);
         EventBadge eventBadge = EventBadge.valueOf(saleInformation.findTotalBenefitPrice());
         OutputView.printEventBadge(eventBadge.getBadgeName());
     }
@@ -52,5 +49,12 @@ public class ChristmasPromotion {
         OutputView.printAllOrderMenu(user.getAllMenuAndQuantity());
         int totalPrice = user.calculateTotalPrice();
         OutputView.printBeforeSaleTotalPrice(Parser.parseNumberCommaFormat(totalPrice));
+    }
+
+    private void printSaleIformation(SaleInformation saleInformation) {
+        OutputView.printBonusMenu(saleInformation.findBonusMenu().getMent());
+        OutputView.printBenefitDetails(saleInformation.allDetailsMent());
+        OutputView.printAllBenefitPrice(Parser.parseNumberCommaFormat(saleInformation.findTotalBenefitPrice()));
+        OutputView.printActualPayment(Parser.parseNumberCommaFormat(saleInformation.calculateActialPayment()));
     }
 }

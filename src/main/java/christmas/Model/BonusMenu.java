@@ -2,7 +2,7 @@ package christmas.Model;
 
 public enum BonusMenu {
     NOTHING(0, "없음", ""),
-    BONUS_MENU(25000, "샴페인 1개", "증정 이벤트: -25,000원");
+    BONUS_MENU(25000, "샴페인 1개", "증정 이벤트: -25,000원\n");
 
     private static final int MINIMUM_BONUS_MENU_PRICE = 120000;
 
