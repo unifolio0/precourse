@@ -17,7 +17,7 @@ public class VisitDateTest {
             "", " "  /*빈 문자열인 경우*/
     })
     @ParameterizedTest
-    void VisitDateNotValidException(String input) {
+    void visitDateNotValidException(String input) {
         assertThatThrownBy(() -> new VisitDate(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(ValidatorConstant.VISIT_DATE_ERROR.getMessage());
