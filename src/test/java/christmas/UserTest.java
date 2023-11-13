@@ -13,7 +13,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class UserTest {
-    @DisplayName("적합한 입력에 대하여 Map을 정확히 생성하는지 테스트")
+    @DisplayName("적합한 입력에 대하여 Map을 정확히 생성하는지 테스트 1~2")
     @Test
     void makeUserMenuAndQuantity1() {
         User user = new User("양송이수프-3,바비큐립-2,레드와인-3");
@@ -28,7 +28,7 @@ public class UserTest {
                 .isEqualTo(Map.of("아이스크림",3));
     }
 
-    @DisplayName("할인 전 총 주문 금액을 정확히 도출하는 지 테스트")
+    @DisplayName("할인 전 총 주문 금액을 정확히 도출하는 지 테스트 1~2")
     @Test
     void calculateBeforeSaleTotalPrice1() {
         User user = new User("양송이수프-3,바비큐립-2,레드와인-3");
