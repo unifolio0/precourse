@@ -18,18 +18,17 @@ public class SaleInformation {
 
     public String allDetailsMent() {
         String detailsMent = "";
-        if (isSale()) {
-            detailsMent += findDDaySaleDetailsMent();
-            detailsMent += findDateSaleDetailsMent();
-            detailsMent += findBonusMenu().getDetailsMent();
-            return detailsMent;
+        detailsMent += findDDaySaleDetailsMent();
+        detailsMent += findDateSaleDetailsMent();
+        detailsMent += findBonusMenu().getDetailsMent();
+        if (isNotSale() || detailsMent.isBlank()) {
+            return "없음\n";
         }
-        detailsMent += "없음";
         return detailsMent;
     }
 
-    private boolean isSale() {
-        return this.user.calculateTotalPrice() >= MINIMUM_TOTAL_PRICE;
+    private boolean isNotSale() {
+        return (this.user.calculateTotalPrice() < MINIMUM_TOTAL_PRICE);
     }
 
     private D_DaySale findDDaySale() {
@@ -62,9 +61,11 @@ public class SaleInformation {
 
     public int findTotalBenefitPrice() {
         int total = 0;
-        total -= findBonusMenu().getPrice();
-        total -= findDDaySale().saleAmount();
-        total -= findDateSaleAmount();
+        if (!isNotSale()) {
+            total -= findBonusMenu().getPrice();
+            total -= findDDaySale().saleAmount();
+            total -= findDateSaleAmount();
+        }
         return total;
     }
 
@@ -74,8 +75,10 @@ public class SaleInformation {
 
     private int findActualBenefitPrice() {
         int total = 0;
-        total += findDDaySale().saleAmount();
-        total += findDateSaleAmount();
+        if (!isNotSale()) {
+            total += findDDaySale().saleAmount();
+            total += findDateSaleAmount();
+        }
         return total;
     }
 }
