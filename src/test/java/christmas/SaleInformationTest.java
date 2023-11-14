@@ -76,6 +76,12 @@ public class SaleInformationTest {
                 .isEqualTo("증정 이벤트: -25,000원\n");
     }
 
+    @Test
+    void detailsMentCheck10() {/*크리스마스 디데이 할인, 평일 할인을 받는 경우: 평일(21일)에 디저트 4개 포함 120,000원 미만 주문한 경우*/
+        assertThat((saleInformation10.allDetailsMent()))
+                .isEqualTo("크리스마스 디데이 할인: -3,000원\n평일 할인: -8,092원\n");
+    }
+
     @DisplayName("총혜택 금액을 정확히 도출하는 지 테스트 1~9")
     @Test
     void calculateTotalBenefitPrice1() {
@@ -131,6 +137,12 @@ public class SaleInformationTest {
                 .isEqualTo(-25000);
     }
 
+    @Test
+    void calculateTotalBenefitPrice10() {
+        assertThat((saleInformation10.findTotalBenefitPrice()))
+                .isEqualTo(-11092);
+    }
+
     @DisplayName("할인 후 예상 결제 금액을 정확히 도출하는 지 테스트")
     @Test
     void calculateActialPayment1() {
@@ -184,5 +196,11 @@ public class SaleInformationTest {
     void calculateActialPayment9() {
         assertThat((saleInformation9.calculateActialPayment()))
                 .isEqualTo(166000);
+    }
+
+    @Test
+    void calculateActialPayment10() {
+        assertThat((saleInformation10.calculateActialPayment()))
+                .isEqualTo(45408);
     }
 }

@@ -39,4 +39,8 @@ public class SaleInformationTestInstance {
     /*증명 이벤트 받는 경우: 25일 이후 평일(28일)에 디저트 없이 120,000원 이상 주문한 경우*/
     static String input9 = "양송이수프-1,크리스마스파스타-4,레드와인-1";
     static SaleInformation saleInformation9 = new SaleInformation(28, new User(input9));
+
+    /*크리스마스 디데이 할인, 평일 할인을 받는 경우: 평일(21일)에 디저트 4개 포함 120,000원 미만 주문한 경우*/
+    static String input10 = "타파스-3,초코케이크-2,아이스크림-2";
+    static SaleInformation saleInformation10 = new SaleInformation(21, new User(input10));
 }
