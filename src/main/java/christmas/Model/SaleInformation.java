@@ -31,8 +31,8 @@ public class SaleInformation {
         return (this.user.calculateTotalPrice() < MINIMUM_TOTAL_PRICE);
     }
 
-    private D_DaySale findDDaySale() {
-        return new D_DaySale(visitDate);
+    private DDaySale findDDaySale() {
+        return new DDaySale(visitDate);
     }
 
     private String findDDaySaleDetailsMent() {

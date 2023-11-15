@@ -2,10 +2,10 @@ package christmas.Model;
 
 import christmas.Parser;
 
-public class D_DaySale {
+public class DDaySale {
     private final int visitDate;
 
-    public D_DaySale(int visitDate) {
+    public DDaySale(int visitDate) {
         this.visitDate = visitDate;
     }
     public int saleAmount() {
