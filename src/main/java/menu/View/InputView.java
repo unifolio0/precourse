@@ -15,7 +15,9 @@ public class InputView {
     }
 
     public static String requireNotEatMenu(String name) {
-        System.out.printf(ASK_NOT_EAT_MENU, name);
-        return Console.readLine();
+        System.out.printf(ASK_NOT_EAT_MENU + LINE_BREAKING, name);
+        String input = Console.readLine();
+        System.out.println();
+        return input;
     }
 }
