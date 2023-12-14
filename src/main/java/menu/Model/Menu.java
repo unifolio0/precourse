@@ -18,6 +18,10 @@ public enum Menu {
         this.detaliMenu = detaliMenu;
     }
 
+    public static Menu valueOf(int idx) {
+        return values()[idx];
+    }
+
     public static boolean checkMenu(String input) {
         for (Menu menu : values()) {
             if (menu.detaliMenu.contains(input)) {
@@ -25,5 +29,13 @@ public enum Menu {
             }
         }
         return false;
+    }
+
+    public List<String> getDetaliMenu() {
+        return this.detaliMenu;
+    }
+
+    public String getName() {
+        return this.name;
     }
 }

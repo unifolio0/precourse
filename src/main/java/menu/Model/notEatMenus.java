@@ -14,4 +14,8 @@ public class notEatMenus {
         Validator.validateMenuNamesSize(checkMenus);
         this.notEatMenu = checkMenus;
     }
+
+    public List<String> getNotEatMenu() {
+        return this.notEatMenu;
+    }
 }

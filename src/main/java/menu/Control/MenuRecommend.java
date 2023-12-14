@@ -1,5 +1,6 @@
 package menu.Control;
 
+import menu.Model.Coaches;
 import menu.Model.Names;
 import menu.Model.notEatMenus;
 import menu.View.InputView;
@@ -11,12 +12,18 @@ import java.util.List;
 public class MenuRecommend {
     public void run() {
         OutputView.printOpenTitle();
-        createCoaches();
+        Coaches coaches = createCoaches();
+        coaches.updateRecommendMenuChategory();
+        String chategoryAnswer = coaches.findChategoryAnswer();
+        List<String> detailAnswers = coaches.findDetailAnswers();
+        OutputView.printMenuRecommed(chategoryAnswer, detailAnswers);
     }
 
-    private void createCoaches() {
+    private Coaches createCoaches() {
         Names names = findCoachesName();
         List<notEatMenus> inputs = findNotEatMenus(names);
+        Coaches coaches = new Coaches(names, inputs);
+        return coaches;
     }
 
     private Names findCoachesName() {
@@ -36,7 +43,6 @@ public class MenuRecommend {
         for (String name : names.getNames()) {
             updateInputs(inputs, name);
         }
-        System.out.println(inputs);
         return inputs;
     }
 
