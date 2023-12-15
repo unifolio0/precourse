@@ -20,11 +20,14 @@ public class InputView {
     private static final String LEVEL_TOTAL = LEVEL1 + LEVEL2 + LEVEL3 + LEVEL4 + LEVEL5;
     private static final String ASK_COURSE_LEVEL_MISSION = "과정, 레벨, 미션을 선택하세요.";
     private static final String EX_COURSE_LEVEL_MISSION = "ex) 백엔드, 레벨1, 자동차경주";
+    private static final String ASK_RETRY = "매칭 정보가 있습니다. 다시 매칭하시겠습니까?";
+    private static final String RETRY_OPTION = "네 | 아니오";
 
     public static String requireOption() {
         System.out.println(OPTION_TITLE);
         System.out.println(OPTION_TOTAL);
         String input = Console.readLine();
+        System.out.println();
         return input;
     }
     public static String requireCourseLevelMission() {
@@ -35,6 +38,13 @@ public class InputView {
         System.out.println(DIVISION);
         System.out.println(ASK_COURSE_LEVEL_MISSION);
         System.out.println(EX_COURSE_LEVEL_MISSION);
+        String input = Console.readLine();
+        return input;
+    }
+
+    public static String requireRetry() {
+        System.out.println(ASK_RETRY);
+        System.out.println(RETRY_OPTION);
         String input = Console.readLine();
         return input;
     }
