@@ -65,10 +65,20 @@ public class Pair {
 
     private boolean checkPair(List<Crew> checkCrew) {
         for (int i = 0; i < this.pair.size(); i++) {
-            if (this.pair.get(i).get(0).equals(checkCrew.get(0)) && this.pair.get(i).get(1).equals(checkCrew.get(1))) {
+            if (checkRepeat(this.pair.get(i), checkCrew)) {
                 return true;
             }
-            if (this.pair.get(i).get(1).equals(checkCrew.get(0)) && this.pair.get(i).get(0).equals(checkCrew.get(1))) {
+        }
+        return false;
+    }
+
+    private boolean checkRepeat(List<Crew> crews, List<Crew> checkCrew) {
+        int check = 0;
+        for (Crew crew : crews) {
+            if (checkCrew.contains(crew)) {
+                check++;
+            }
+            if (check > 1) {
                 return true;
             }
         }

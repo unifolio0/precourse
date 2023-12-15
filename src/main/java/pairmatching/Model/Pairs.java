@@ -30,9 +30,9 @@ public class Pairs {
     }
 
     private Pair isContainPair(List<Pair> pair, PairInformation pairInformation) {
-        for (Pair oldPair : pair) {
-            if (oldPair.equals(pairInformation)) {
-                return oldPair;
+        for (int i = pair.size() - 1; i >= 0; i--) {
+            if (pair.get(i).equals(pairInformation)) {
+                return pair.get(i);
             }
         }
         return null;

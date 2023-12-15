@@ -60,10 +60,12 @@ public class PairMatchingApplication {
 
     private void playOption(String option) {
         if (option.equals("1")) {
+            OutputView.printPairInformation();
             pairMatching();
             return;
         }
         if (option.equals("2")) {
+            OutputView.printPairInformation();
             pairSearching();
             return;
         }
@@ -107,6 +109,7 @@ public class PairMatchingApplication {
             count++;
             makePair(pairInformation);
         }
+        count = 0;
         return pair;
     }
 
@@ -114,6 +117,7 @@ public class PairMatchingApplication {
         if (pairs.isContain(pairInformation)) {
             if (!retryPair()) {
                 pairMatching();
+                return;
             }
         }
         Pair pair = makePair(pairInformation);
