@@ -14,7 +14,7 @@ public class PairInformation {
         this.course = Course.getCourse(pairInformation.get(0));
         this.level = Level.getLevel(pairInformation.get(1));
         this.mission = pairInformation.get(2);
-        Level.searchMission(mission);
+        Level.searchMission(mission, level);
     }
 
     public Course getCourse() {

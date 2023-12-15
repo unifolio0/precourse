@@ -38,12 +38,10 @@ public enum Level {
         throw new IllegalArgumentException("[ERROR] 해당 레벨은 존재하지 않습니다.");
     }
 
-    public static boolean searchMission(String mission) {
-        for (Level level : values()) {
-            if (level.missions.contains(mission)) {
-                return true;
-            }
+    public static boolean searchMission(String mission, Level level) {
+        if(level.missions.contains(mission)) {
+            return true;
         }
-        throw new IllegalArgumentException("[ERROR]");
+        throw new IllegalArgumentException("[ERROR] 해당 미션은 존재하지 않습니다.");
     }
 }
