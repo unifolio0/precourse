@@ -36,7 +36,13 @@ public class PairMatchingApplication {
 
     private Crews makeCrews(Course course) {
         try {
-            File file = new File("src/main/resources/backend-crew.md");
+            File file = null;
+            if (course.equals(Course.BACKEND)) {
+                file = new File("src/main/resources/backend-crew.md");
+            }
+            if (course.equals(Course.FRONTEND)) {
+                file = new File("src/main/resources/frontend-crew.md");
+            }
             FileReader fileReader = new FileReader(file);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
             String line = "";
@@ -127,7 +133,12 @@ public class PairMatchingApplication {
     }
 
     private void pairSearching() {
-
+        String input = InputView.requireCourseLevelMission();
+        PairInformation pairInformation = new PairInformation(input);
+        Pair pair = pairs.searchPair(pairInformation);
+        if (pair != null) {
+            OutputView.printPair(Parser.parserCrew(pair.getPair()));
+        }
     }
 
     private void pairReset() {

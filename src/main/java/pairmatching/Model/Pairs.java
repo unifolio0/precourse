@@ -22,13 +22,20 @@ public class Pairs {
     public boolean isContain(PairInformation pairInformation) {
         Collection<List<Pair>> values = this.pairs.values();
         for (List<Pair> pair : values) {
-            for (Pair oldPair : pair) {
-                if (oldPair.equals(pairInformation)) {
-                    return true;
-                }
+            if (isContainPair(pair, pairInformation) != null) {
+                return true;
             }
         }
         return false;
+    }
+
+    private Pair isContainPair(List<Pair> pair, PairInformation pairInformation) {
+        for (Pair oldPair : pair) {
+            if (oldPair.equals(pairInformation)) {
+                return oldPair;
+            }
+        }
+        return null;
     }
 
     public boolean checkPairs(Pair pair) {
@@ -46,5 +53,16 @@ public class Pairs {
 
     public void reset() {
         pairs.clear();
+    }
+
+    public Pair searchPair(PairInformation pairInformation) {
+        Collection<List<Pair>> values = this.pairs.values();
+        for (List<Pair> pair : values) {
+            Pair oldPair = isContainPair(pair, pairInformation);
+            if (oldPair != null) {
+                return oldPair;
+            }
+        }
+        throw new IllegalArgumentException("[ERROR] 매칭 이력이 없습니다.");
     }
 }

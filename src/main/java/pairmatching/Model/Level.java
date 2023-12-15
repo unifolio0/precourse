@@ -44,6 +44,6 @@ public enum Level {
                 return true;
             }
         }
-        throw new IllegalArgumentException("[ERROR] 해당 미션은 존재하지 않습니다.");
+        throw new IllegalArgumentException("[ERROR]");
     }
 }

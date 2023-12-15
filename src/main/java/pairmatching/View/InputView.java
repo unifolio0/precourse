@@ -1,6 +1,6 @@
 package pairmatching.View;
 
-import camp.nextstep.edu.missionutils.Console;
+import java.util.Scanner;
 
 public class InputView {
     private static final String OPTION_TITLE = "기능을 선택하세요.";
@@ -23,10 +23,12 @@ public class InputView {
     private static final String ASK_RETRY = "매칭 정보가 있습니다. 다시 매칭하시겠습니까?";
     private static final String RETRY_OPTION = "네 | 아니오";
 
+    private static Scanner scan = new Scanner(System.in);
+
     public static String requireOption() {
         System.out.println(OPTION_TITLE);
         System.out.println(OPTION_TOTAL);
-        String input = Console.readLine();
+        String input = scan.nextLine();
         System.out.println();
         return input;
     }
@@ -38,14 +40,16 @@ public class InputView {
         System.out.println(DIVISION);
         System.out.println(ASK_COURSE_LEVEL_MISSION);
         System.out.println(EX_COURSE_LEVEL_MISSION);
-        String input = Console.readLine();
+        String input = scan.nextLine();
+        System.out.println();
         return input;
     }
 
     public static String requireRetry() {
         System.out.println(ASK_RETRY);
         System.out.println(RETRY_OPTION);
-        String input = Console.readLine();
+        String input = scan.nextLine();
+        System.out.println();
         return input;
     }
 }
