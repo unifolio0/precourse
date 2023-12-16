@@ -4,24 +4,26 @@ import java.util.List;
 import static oncall.Validator.ValidatorConstant.*;
 
 public enum Month {
-    JAN(1, List.of(1)),
-    FEB(2, List.of()),
-    MAR(3, List.of(1)),
-    APR(4, List.of()),
-    MAY(5, List.of(5)),
-    JUN(6, List.of(6)),
-    JUL(7, List.of()),
-    AUG(8, List.of(15)),
-    SEP(9, List.of()),
-    OCT(10, List.of(3)),
-    NOV(11, List.of()),
-    DEC(12, List.of(25));
+    JAN(1, 31, List.of(1)),
+    FEB(2, 28, List.of()),
+    MAR(3, 31, List.of(1)),
+    APR(4, 30, List.of()),
+    MAY(5, 31, List.of(5)),
+    JUN(6, 30, List.of(6)),
+    JUL(7, 31, List.of()),
+    AUG(8, 31, List.of(15)),
+    SEP(9, 30, List.of()),
+    OCT(10, 31, List.of(3)),
+    NOV(11, 30, List.of()),
+    DEC(12, 31, List.of(25));
 
-    int month;
-    List<Integer> holiday;
+    private int month;
+    private int endDay;
+    private List<Integer> holiday;
 
-    Month(int month, List<Integer> holiday) {
+    Month(int month, int endDay, List<Integer> holiday) {
         this.month = month;
+        this.endDay = endDay;
         this.holiday = holiday;
     }
 
@@ -32,5 +34,9 @@ public enum Month {
             }
         }
         throw new IllegalArgumentException(VALIDATE_MONTH_START_DAY.getMessage());
+    }
+
+    public int getEndDay() {
+        return this.endDay;
     }
 }

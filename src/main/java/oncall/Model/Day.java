@@ -11,8 +11,8 @@ public enum Day {
     SAT("토", true),
     SUN("일", true);
 
-    String day;
-    boolean holiday;
+    private String day;
+    private boolean holiday;
 
     Day(String day, boolean holiday) {
         this.day = day;
