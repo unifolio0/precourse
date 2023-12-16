@@ -9,7 +9,7 @@ public class Oncall {
     private Peoples dayPeoples;
     private Peoples holidayPeoples;
     private Map<Integer, Map<Day, Boolean>> calendar;
-    private int dayidx, holidayidx;
+    private int dayidx = -1, holidayidx = -1;
     private boolean isday = false, isholiday = false;
     private String prePeople;
 
@@ -24,8 +24,6 @@ public class Oncall {
         List<String> monthCalendar = new ArrayList<>();
         String people, month = String.valueOf(this.monthDay.getMonth());
         Day today;
-        this.dayidx = -1;
-        this.holidayidx = -1;
         for (int i = 1; i <= this.monthDay.getEndDay(); i++) {
             today = calendar.get(i).keySet().iterator().next();
             people = findPeople(i, today);
@@ -56,17 +54,27 @@ public class Oncall {
         int idx = findidx(date, today);
         String people;
         if (checkHoliday(date, today)) {
-            people = this.holidayPeoples.todayPeople(idx);
-            if (people.equals(prePeople)) {
-                isholiday = true;
-                people = this.holidayPeoples.todayPeople(idx + 1);
-            }
+            people = findHolidayPeople(idx);
             return people;
         }
-        people = this.dayPeoples.todayPeople(idx);
+        people = findDayPeople(idx);
+        return people;
+    }
+
+    private String findDayPeople(int idx) {
+        String people = this.dayPeoples.todayPeople(idx);
         if (people.equals(this.prePeople)) {
             isday = true;
             people = this.dayPeoples.todayPeople(idx + 1);
+        }
+        return people;
+    }
+
+    private String findHolidayPeople(int idx) {
+        String people = this.holidayPeoples.todayPeople(idx);
+        if (people.equals(prePeople)) {
+            isholiday = true;
+            people = this.holidayPeoples.todayPeople(idx + 1);
         }
         return people;
     }
