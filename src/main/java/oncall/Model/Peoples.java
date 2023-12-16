@@ -19,4 +19,11 @@ public class Peoples {
     public void checkPeoples(Peoples input) {
         Validator.validateEqualPeoples(this.peoples, input.peoples);
     }
+
+    public String todayPeople(int idx) {
+        if (idx < 0) {
+            idx += this.peoples.size();
+        }
+        return this.peoples.get(idx % this.peoples.size());
+    }
 }

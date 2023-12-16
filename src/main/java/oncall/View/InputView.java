@@ -22,6 +22,7 @@ public class InputView {
     public static String requireHolidayPeople() {
         System.out.print(ASK_HOLIDAY_PEOPLE);
         String input = Console.readLine();
+        System.out.println();
         return input;
     }
 }

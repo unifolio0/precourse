@@ -39,4 +39,12 @@ public enum Month {
     public int getEndDay() {
         return this.endDay;
     }
+
+    public boolean containHoliday(int date) {
+        return this.holiday.contains(date);
+    }
+
+    public int getMonth() {
+        return this.month;
+    }
 }

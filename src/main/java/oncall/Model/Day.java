@@ -11,20 +11,33 @@ public enum Day {
     SAT("토", true),
     SUN("일", true);
 
-    private String day;
+    private String dayName;
     private boolean holiday;
 
-    Day(String day, boolean holiday) {
-        this.day = day;
+    Day(String dayName, boolean holiday) {
+        this.dayName = dayName;
         this.holiday = holiday;
     }
 
     public static Day getDay(String input) {
         for (Day day : values()) {
-            if (day.day.equals(input)) {
+            if (day.dayName.equals(input)) {
                 return day;
             }
         }
         throw new IllegalArgumentException(VALIDATE_MONTH_START_DAY.getMessage());
+    }
+
+    public boolean isHoliday() {
+        return holiday;
+    }
+
+    public Day nextDay() {
+        int idx = this.ordinal();
+        return values()[(idx + 1) % values().length];
+    }
+
+    public String getDayName() {
+        return this.dayName;
     }
 }

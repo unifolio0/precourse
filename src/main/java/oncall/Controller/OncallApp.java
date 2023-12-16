@@ -1,9 +1,12 @@
 package oncall.Controller;
 
 import oncall.Model.MonthDay;
+import oncall.Model.Oncall;
 import oncall.Model.Peoples;
 import oncall.View.InputView;
 import oncall.View.OutputView;
+
+import java.util.List;
 
 public class OncallApp {
     private MonthDay monthDay;
@@ -13,6 +16,9 @@ public class OncallApp {
     public void run() {
         this.monthDay = createMonthDay();
         createAllPeoples();
+        Oncall oncall = new Oncall(this.monthDay, this.dayPeoples, this.holidayPeoples);
+        List<String> calendar = oncall.oncallCalendar();
+        OutputView.printCalendar(calendar);
     }
 
     private MonthDay createMonthDay() {
