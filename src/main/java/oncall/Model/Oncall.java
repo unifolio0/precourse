@@ -35,19 +35,27 @@ public class Oncall {
 
     private int findidx(int date, Day today) {
         if (checkHoliday(date, today)) {
-            this.holidayidx++;
-            if (isholiday) {
-                isholiday = false;
-                return this.holidayidx - 1;
-            }
-            return this.holidayidx;
+            return setHolidayIdx();
         }
+        return setDayIdx();
+    }
+
+    private int setDayIdx() {
         this.dayidx++;
         if (isday) {
             isday = false;
             return this.dayidx - 1;
         }
         return this.dayidx;
+    }
+
+    private int setHolidayIdx() {
+        this.holidayidx++;
+        if (isholiday) {
+            isholiday = false;
+            return this.holidayidx - 1;
+        }
+        return this.holidayidx;
     }
 
     private String findPeople(int date, Day today) {
