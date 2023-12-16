@@ -7,7 +7,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.assertj.core.api.Assertions.withinPercentage;
 
 public class MonthDayTest {
     @DisplayName("해당 달에 1~12사이의 값이 아닌 다른 값을 입력한 경우 예외 처리")
