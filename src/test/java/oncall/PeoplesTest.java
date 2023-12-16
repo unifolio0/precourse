@@ -4,6 +4,7 @@ import oncall.Model.Peoples;
 import oncall.Validator.ValidatorConstant;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -41,6 +42,16 @@ public class PeoplesTest {
     @ParameterizedTest
     void peoplesNameDuplicate(String input) {
         assertThatThrownBy(() -> new Peoples(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ValidatorConstant.VALIDATE_MONTH_START_DAY.getMessage());
+    }
+
+    @DisplayName("두 집단이 다를 때 예외 처리")
+    @Test
+    void peoplesNotEqual() {
+        Peoples peoples1 = new Peoples("도니,토끼,호랑이,사자,사슴,말");
+        Peoples peoples2 = new Peoples("도니,토끼,사자,별,사슴,호랑이");
+        assertThatThrownBy(() -> peoples1.checkPeoples(peoples2))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(ValidatorConstant.VALIDATE_MONTH_START_DAY.getMessage());
     }
