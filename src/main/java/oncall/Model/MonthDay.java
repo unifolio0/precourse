@@ -13,6 +13,7 @@ public class MonthDay {
     private Map<Integer, Map<Day, Boolean>> calendar;
 
     public MonthDay(String input) {
+        Validator.validateLastComma(input);
         List<String> monthDay = Parser.parserSplitComma(input);
         Validator.validateMonthDayInputSize(monthDay);
         this.month = Month.valueOf(Validator.validateParseInteger(monthDay.get(0)));

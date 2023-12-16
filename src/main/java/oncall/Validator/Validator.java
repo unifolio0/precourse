@@ -65,4 +65,10 @@ public class Validator {
             }
         }
     }
+
+    public static void validateLastComma(String userInput) {
+        if (userInput.charAt(userInput.length() - 1) == ',') {
+            throw new IllegalArgumentException(VALIDATE_MONTH_START_DAY.getMessage());
+        }
+    }
 }

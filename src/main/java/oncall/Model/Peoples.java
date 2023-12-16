@@ -9,6 +9,7 @@ public class Peoples {
     private List<String> peoples;
 
     public Peoples(String input) {
+        Validator.validateLastComma(input);
         List<String> peoples = Parser.parserSplitComma(input);
         Validator.validatePeoplesName(peoples);
         Validator.validatePeoplesSize(peoples);
